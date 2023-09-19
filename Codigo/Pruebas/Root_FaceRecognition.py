@@ -9,20 +9,20 @@ import cv2
 import face_recognition
 
 
-# Para imágen fija
 image = cv2.imread('Images/Frida.jpg')
 face_location = face_recognition.face_locations(image)[0]
-print("face_loc:",face_location) # face_loc: (top, right, bottom, left)
+# print("face_loc:",face_location) # face_loc: (top, right, bottom, left)
 face_image_encoding = face_recognition.face_encodings(image, known_face_locations=[face_location])[0]
-print("face_image_encoding:",face_image_encoding) # face_image_encoding: [-0.062...] 128-dimension face encoding
+#print("face_image_encoding:",face_image_encoding) # face_image_encoding: [-0.062...] 128-dimension face encoding
 
+# Detectar rostro en imágen fija
 """ cv2.rectangle(image, (face_location[3], face_location[0]), (face_location[1], face_location[2]), (0,255,0), 2) # (x1,y1), (x2,y2), (B,G,R), grosor
 cv2.imshow('Frida',image)
 cv2.waitKey(0)
 cv2.destroyAllWindows() """
 
-# Para video
-cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+# Detectar rostro en video y compararlo con una imagen.
+cap = cv2.VideoCapture(0)
 
 while True:
     ret, frame = cap.read()
