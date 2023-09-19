@@ -1,4 +1,4 @@
-# 1. Metodología
+# Metodología
 
 En esta etapa, se lleva a cabo el proceso de verificación que las partes claves se están haciendo de manera correcta, sin embargo estas se pueden revisar de manera definitiva hasta que termina el proyecto.o.
 
