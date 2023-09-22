@@ -23,8 +23,8 @@ f_circulo_encodings = []
 f_circulo_names = []
 for image_circulo_name in os.listdir(circuloPath):                                                                      # Recorrer la carpeta de las personas de confianza
     image_circulo = cv2.imread("AlumnosData/"+ image_circulo_name)
-    #image_circulo = (image_circulo, cv2.COLOR_BGR2RGB)
-    f_circulo_locations = face_recognition.face_locations(image_circulo)[0]                                             # Obtiene las coordenadas del rostro en la imagen         
+    f_circulo_locations = face_recognition.face_locations(image_circulo)[0]
+    #f_circulo_locations = face_recognition.face_locations(image_circulo, model="cnn")[0]                                # Obtiene las coordenadas del rostro en la imagen         
     f_circulo_coding = face_recognition.face_encodings(image_circulo, known_face_locations=[f_circulo_locations])[0]    # Obtenemos las características del rostro encontrado
     f_circulo_encodings.append(f_circulo_coding)
     f_circulo_names.append(image_circulo_name.split(".")[0])
@@ -47,14 +47,14 @@ while True:
             if True in matches:                                                          # Si se reconoce el rostro
                 index = matches.index(True)
                 name = f_circulo_names[index]
+                color = (0,255,0)
                 face_names.append(name)
+            else:
+                face_names.append("Desconocido")
+                color = (0,0,255)
         for (top, right, bottom, left), name in zip(f_data_locations, face_names):       # Dibujamos un rectángulo alrededor del rostro
-            # top *= 4 # Multiplica por 4 el tamaño del frame
-            # right *= 4
-            # bottom *= 4
-            # left *= 4
-            cv2.rectangle(frame, (left, top), (right, bottom), (0,255,0), 2)
-            cv2.rectangle(frame, (left, bottom -10), (right, bottom), (0,255,0), cv2.FILLED)
+            cv2.rectangle(frame, (left, top), (right, bottom), color, 2)
+            cv2.rectangle(frame, (left, bottom -10), (right, bottom), color, cv2.FILLED)
             font = cv2.FONT_HERSHEY_DUPLEX
             cv2.putText(frame, name, (left +3, bottom -3), font, 0.25, (255,255,255), 1)
     else:
@@ -68,5 +68,5 @@ end_time = time.time() - start_time
 
 cap.release()
 print("[PROCESO] Camara liberada")
-print("[PROCESO] Tiempo de ejecucion",end_time)
+print("[PROCESO] Tiempo de ejecucion", end_time)
 print("[PROCESO] Cerrando programa...")
