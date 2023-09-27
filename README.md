@@ -22,7 +22,11 @@ La carpeta raíz de este repositorio contiene los siguientes archivos y carpetas
 
 A continuación, se presenta una lista de los archivos que deben ser revisados para calificar cada subcompetencia. Cabe mencionar que para esta etapa, **Momento de Retroalimentación**, se debe situar en la carpeta `Retroalimentación`:
 
-*  `MR1_Metodologia`
-   * `\ReadMe.md`: Archivo que describe la entrega de este momento.
-   * `\archivo.pdf`: Archivo donde se desarrolla la evidencia.
+* `MR1_Metodologia`
+
+Documentos en la carpeta:
+
+*   [One_page](https://github.com/Memo9494/classrecon_team1_TC3007C.501/blob/main/Retroalimentacion/MR1_Metodologia/OnePage_Equipo1.pdf): Documento donde se resumen los requerimientos del proyecto.
+*   [Memorandum of Understanding](https://github.com/Memo9494/classrecon_team1_TC3007C.501/blob/main/Retroalimentacion/MR1_Metodologia/MOU_Equipo1.pdf): Acuerdo de entendimiento entre los Socios: NDS - Cognitive Labs y el equipo.
+*   [Metodología y plan inicial](https://github.com/Memo9494/classrecon_team1_TC3007C.501/blob/main/Retroalimentacion/MR1_Metodologia/Metodolog%C3%ADa_Equipo1.pdf): Desarrollo del plan de trabajo a través de objetivos SMART, con fechas de acuerdo a los entregables establecidos por el Socioformador.
    
