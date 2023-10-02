@@ -22,13 +22,11 @@ La carpeta raíz de este repositorio contiene los siguientes archivos y carpetas
 
 A continuación, se presenta una lista de los archivos que deben ser revisados para evaluar los avances. Cabe mencionar que para esta etapa, **Avances cada dos semanas**, se debe situar en la carpeta `Evidencias al socioformador`:
 
-* `MR1_Metodologia`
+* `PortalAsistencia`
 
 Documentos en la carpeta:
 
-*   [One_page](https://github.com/Memo9494/classrecon_team1_TC3007C.501/blob/main/Retroalimentacion/MR1_Metodologia/OnePage_Equipo1.pdf): Documento donde se resumen los requerimientos del proyecto.
-*   [Memorandum of Understanding](https://github.com/Memo9494/classrecon_team1_TC3007C.501/blob/main/Retroalimentacion/MR1_Metodologia/MOU_Equipo1.pdf): Acuerdo de entendimiento entre los Socios: NDS - Cognitive Labs y el equipo.
-*   [Metodología y plan inicial](https://github.com/Memo9494/classrecon_team1_TC3007C.501/blob/main/Retroalimentacion/MR1_Metodologia/Metodolog%C3%ADa_Equipo1.pdf): Desarrollo del plan de trabajo a través de objetivos SMART, con fechas de acuerdo a los entregables establecidos por el Socioformador.
+*   [...](): Documento donde se resumen los requerimientos del proyecto.
    
 
 ## Archivos para revisión - Profesores
