@@ -17,7 +17,7 @@ if __name__ == '__main__':
             break
 
         results = model(frame, stream=True)
-
+        
         for res in results:
             filtered_indices = np.where(res.boxes.conf.cpu().numpy() > 0.5)[0]
             boxes = res.boxes.xyxy.cpu().numpy()[filtered_indices].astype(int)

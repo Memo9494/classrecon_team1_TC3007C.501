@@ -7,7 +7,6 @@ Created on Tue Sep 19 2023
 import cv2
 import os
 import face_recognition
-from datetime import datetime
 import time
 
 print("[PROCESO] Iniciando programa...")
@@ -15,28 +14,33 @@ print("[PROCESO] Iniciando programa...")
 start_time = time.time() 
 # Carpeta con rostros alumnos registrados
 circuloPath = os.path.dirname(os.path.abspath(__file__))
-circuloPath = circuloPath + '\\AlumnosData'
+circuloPath = circuloPath + '\\persons_data'
 circuloPath = circuloPath.replace("\\","/")
+
+# Conteo de FPS
+fps = 0
+frame_count = 0
+start_time_fps = start_time
 
 # Nombres de los alumnos registrados
 f_circulo_encodings = []
 f_circulo_names = []
 for image_circulo_name in os.listdir(circuloPath):                                                                      # Recorrer la carpeta de las personas de confianza
-    image_circulo = cv2.imread("AlumnosData/"+ image_circulo_name)
+    image_circulo = cv2.imread("persons_data/"+ image_circulo_name)
     f_circulo_locations = face_recognition.face_locations(image_circulo)[0]
-    #f_circulo_locations = face_recognition.face_locations(image_circulo, model="cnn")[0]                                # Obtiene las coordenadas del rostro en la imagen         
     f_circulo_coding = face_recognition.face_encodings(image_circulo, known_face_locations=[f_circulo_locations])[0]    # Obtenemos las características del rostro encontrado
     f_circulo_encodings.append(f_circulo_coding)
     f_circulo_names.append(image_circulo_name.split(".")[0])
-
+print(f_circulo_encodings)
 # Cargamos la cámara
 print('[PROCESO] Cargando camara...')
 cap = cv2.VideoCapture(0)
-
 while True:
     leido, frame = cap.read()
     if not leido:break
     #small_frame = cv2.resize(frame, (0,0), fx=0.25, fy=0.25) # Reduce el tamaño del frame para que sea más rápido el procesamiento
+    elapsed_time = time.time() - start_time_fps
+    frame_count += 1
     f_data_locations = face_recognition.face_locations(frame) # Obtiene las coordenadas del rostro en la imagen
     if f_data_locations != []:                                # Si se detecta un rostro
         print("[PROCESO] Rostro detectado")
@@ -44,6 +48,7 @@ while True:
         f_frame_codings = face_recognition.face_encodings(frame,f_data_locations)        # Obtenemos las características del rostro encontrado
         for face_encoding, (top, right, bottom, left) in zip(f_frame_codings, f_data_locations):                                            # Comparamos el rostro encontrado con los rostros conocidos
             matches = face_recognition.compare_faces(f_circulo_encodings, face_encoding)
+            print("Matches: ", matches)
             if True in matches:                                                          # Si se reconoce el rostro
                 index = matches.index(True)
                 name = f_circulo_names[index]
@@ -56,6 +61,12 @@ while True:
             cv2.putText(frame, name, (left +3, bottom -3), font, 0.4, (255,255,255), 1)
     else:
         print("[ALERTA] No se detecto un rostro")
+    if elapsed_time >= 1:
+            fps = frame_count / elapsed_time
+            frame_count = 0
+            start_time_fps = time.time()
+    text = f"FPS: {fps}"
+    cv2.putText(frame, text, (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)    
     cv2.imshow('Frame',frame)
     if cv2.waitKey(1) == ord('q'):
         break
