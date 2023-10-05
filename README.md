@@ -14,6 +14,7 @@ La carpeta raíz de este repositorio contiene los siguientes archivos y carpetas
 
 *  Archivos
    * README.md: Este archivo
+   * requirerments.txt: En este archivo se especifican las librerias y versiones necesarias para correr la pagina web, utilizar pip install -r requirerments.txt
 *  Carpetas
    * `Final`: Carpeta con la información sobre los entregables finales, que incluyen los cambios solicitados por los revisores.
    * `Retroalimentación`: Carpeta con la información sobre la versión preliminar de cada entregable, que se proporciona para solicitar retroalimentación.
@@ -21,6 +22,12 @@ La carpeta raíz de este repositorio contiene los siguientes archivos y carpetas
 ## Archivos para revisión - Socio formador (NDS - Cognitive Labs)
 
 A continuación, se presenta una lista de los archivos que deben ser revisados para evaluar los avances. Cabe mencionar que para esta etapa, **Avances cada dos semanas**, se debe situar en la carpeta `Evidencias al socioformador`:
+
+Retroalimentacion -> webpage_cv -> Blog_app
+En esta carpeta se encuentra el codigo necesario para hostear la pagina web localmente utilizando django, asi como los usuarios, maestros, y algoritmo de asistencia.
+
+Aqui un video de youtube que evidencia la pagina: https://youtu.be/OIkoupwGZ0g
+
 
 * `PortalAsistencia`
 
