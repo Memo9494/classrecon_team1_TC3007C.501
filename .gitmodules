@@ -1,0 +1,3 @@
+[submodule "Retroalimentacion/webpage_cv/Blog_app"]
+	path = Retroalimentacion/webpage_cv/Blog_app
+	url = https://github.com/Memo9494/Blog_app.git
