@@ -1,7 +1,7 @@
 # Portafolio Reto - Reconocimiento en salon de clases
 **Materia: Inteligencia Artificial en la Ciencia de Datos**
 
-En este repositorio se encuentra la documentacion asi como el desarrollo de Machine learning, web , visión computacional y análisis estadístico para la solución del reto de cognitive labs para medir la asistencia y participación en las aulas del tec de Monterrey
+En este repositorio se encuentra la documentacion asi como el desarrollo de Machine learning, web, visión computacional y análisis estadístico para la solución del reto de cognitive labs para medir la asistencia y participación en las aulas del tec de Monterrey
 
 ## Equipo
 *  Frida Cano Falcón - A01752953
