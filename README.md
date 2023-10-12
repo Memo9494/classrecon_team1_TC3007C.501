@@ -3,11 +3,15 @@
 
 En este repositorio se encuentra la documentacion asi como el desarrollo de Machine learning, web, visión computacional y análisis estadístico para la solución del reto de cognitive labs para medir la asistencia y participación en las aulas del tec de Monterrey
 
+
+
 ## Equipo
 *  Frida Cano Falcón - A01752953
 *  Jorge Javier Sosa Briseño - A01749489
 *  Guillermo Romeo Cepeda Medina - A01284015
 *  Daniel Saldaña Rodríguez - A00829752
+
+
 
 ## Estructura del Repositorio
 La carpeta raíz de este repositorio contiene los siguientes archivos y carpetas:
