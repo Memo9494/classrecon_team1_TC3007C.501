@@ -70,7 +70,6 @@ while True:
     f_data_locations = face_recognition.face_locations(frame) # Obtiene las coordenadas del rostro en la imagen
     if f_data_locations != []:                                # Si se detecta un rostro
         print("[PROCESO] Rostro detectado")
-        face_names = []
         f_frame_codings = face_recognition.face_encodings(frame,f_data_locations)        # Obtenemos las características del rostro encontrado
         for face_encoding, (top, right, bottom, left) in zip(f_frame_codings, f_data_locations): # Comparamos el rostro encontrado con los rostros conocidos
             matches = face_recognition.compare_faces(f_circulo_encodings, face_encoding)
@@ -78,7 +77,6 @@ while True:
             if True in matches:                                                          # Si se reconoce el rostro
                 index = matches.index(True)
                 name = f_circulo_names[index]
-                face_names.append(name)
             else:
                 name = "Desconocido"
             # top *= 4

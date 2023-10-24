@@ -1,5 +1,5 @@
 '''
-Programa para determinar la asistencia con base a la detección de rostros
+Este programa se encarga de registrar los encodings de los rostros de los alumnos que se encuentran en la carpeta "persons_data" y guardarlos en un archivo de texto llamado "encodings.txt".
 Frida Cano (@FCANOF)
 '''
 import cv2
@@ -16,9 +16,8 @@ persons_path = persons_path.replace("\\","/")
 # Definir el nombre del archivo de texto en el que deseas guardar los encodings
 encoding_file = "encodings.txt"
 
-# Nombres de los alumnos registrados
 face_encodings = []
-face_names = []
+face_names = [] # Nombres de los alumnos registrados
 
 # Crear o abrir el archivo en modo de escritura
 with open(encoding_file, "w") as file:
