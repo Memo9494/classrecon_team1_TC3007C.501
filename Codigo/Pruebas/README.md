@@ -1,54 +1,30 @@
-# Portafolio Reto - Reconocimiento en salon de clases
-**Materia: Inteligencia Artificial en la Ciencia de Datos**
+# Retroalimentación
+En esta carpeta se encuentran las distintas versiones del proyecto conforme a los entregables requeridos.
 
-En este repositorio se encuentra la documentacion asi como el desarrollo de Machine learning, web, visión computacional y análisis estadístico para la solución del reto de cognitive labs para medir la asistencia y participación en las aulas del tec de Monterrey
+## Etapas del Proyecto
 
+### 1. Metodología
 
-
-## Equipo
-*  Frida Cano Falcón - A01752953
-*  Jorge Javier Sosa Briseño - A01749489
-*  Guillermo Romeo Cepeda Medina - A01284015
-*  Daniel Saldaña Rodríguez - A00829752
-
-
-
-## Estructura del Repositorio
-La carpeta raíz de este repositorio contiene los siguientes archivos y carpetas:
-
-*  Archivos
-   * README.md: Este archivo
-   * requirerments.txt: En este archivo se especifican las librerias y versiones necesarias para correr la pagina web, utilizar pip install -r requirerments.txt
-*  Carpetas
-   * `Final`: Carpeta con la información sobre los entregables finales, que incluyen los cambios solicitados por los revisores.
-   * `Retroalimentación`: Carpeta con la información sobre la versión preliminar de cada entregable, que se proporciona para solicitar retroalimentación.
-   * `Evidencias al socioformador`: Carpeta con los avances propuestos por o estipulado cada dos semanas a mostrar al socio formador.
-## Archivos para revisión - Socio formador (NDS - Cognitive Labs)
-
-A continuación, se presenta una lista de los archivos que deben ser revisados para evaluar los avances. Cabe mencionar que para esta etapa, **Avances cada dos semanas**, se debe situar en la carpeta `Evidencias al socioformador`:
-
-Retroalimentacion -> webpage_cv -> Blog_app
-En esta carpeta se encuentra el codigo necesario para hostear la pagina web localmente utilizando django, asi como los usuarios, maestros, y algoritmo de asistencia.
-
-Aqui un video de youtube que evidencia la pagina: https://youtu.be/OIkoupwGZ0g
-
-
-* `PortalAsistencia`
-
-Documentos en la carpeta:
-
-*   [...](): Documento donde se resumen los requerimientos del proyecto.
-   
-
-## Archivos para revisión - Profesores
-
-A continuación, se presenta una lista de los archivos que deben ser revisados para calificar cada subcompetencia. Cabe mencionar que para esta etapa, **Momento de Retroalimentación**, se debe situar en la carpeta `Retroalimentación`:
+En esta etapa, se lleva a cabo el proceso de verificación que las partes claves se están haciendo de manera correcta, sin embargo estas se pueden revisar de manera definitiva hasta que termina el proyecto.o.
 
 * `MR1_Metodologia`
 
-Documentos en la carpeta:
+### 2. Datos
+Se analizan los datos presentados en el reto y se determina cuál es el mejor esquema para manejar los datos propuestos por el socio formador.  Lo que se busca es tener una solución eficiente que les permita poder extraer los datos, transformarlos y después cargalos para entrenar sus modelos y analizar resultados.
 
-*   [One_page](https://github.com/Memo9494/classrecon_team1_TC3007C.501/blob/main/Retroalimentacion/MR1_Metodologia/OnePage_Equipo1.pdf): Documento donde se resumen los requerimientos del proyecto.
-*   [Memorandum of Understanding](https://github.com/Memo9494/classrecon_team1_TC3007C.501/blob/main/Retroalimentacion/MR1_Metodologia/MOU_Equipo1.pdf): Acuerdo de entendimiento entre los Socios: NDS - Cognitive Labs y el equipo.
-*   [Metodología y plan inicial](https://github.com/Memo9494/classrecon_team1_TC3007C.501/blob/main/Retroalimentacion/MR1_Metodologia/Metodolog%C3%ADa_Equipo1.pdf): Desarrollo del plan de trabajo a través de objetivos SMART, con fechas de acuerdo a los entregables establecidos por el Socioformador.
-   
+* `MR2_Datos`
+
+### 3. Documentación
+En esta etapa, se busca presentar los avances en cuanto a la documentación del proceso realizado en función de la metodología.
+
+* `MR3_Documentacion`
+
+### 4. Modelo y refinamiento
+En esta etapa, se investigan y evalúan diferentes modelos o enfoques para abordar el problema en cuestión. Se analizan las características de los datos y se selecciona el modelo que mejor se adapte a los requisitos del proyecto. Esto podría incluir la exploración de modelos de aprendizaje automático, algoritmos de análisis estadístico u otras técnicas pertinentes.
+
+* `MR4_ModeloRefinamiento`
+
+### 5. Evaluación
+En esta etapa, se analizan los requerimientos y los datos disponibles y se determinan los tipo de pruebas y métricas que permitirán saber si realmente están cumpliendo con su objetivo y generar diagnósticos del modelo.
+
+* `MR5_Evaluacion`
