@@ -49,7 +49,7 @@ Este código se utiliza para llevar un registro de la asistencia de alumnos a tr
 ## Varios Rostros Xframe_FR
 Este código se utiliza para realizar el reconocimiento facial en un entorno de video en tiempo real, comparando los rostros detectados con los rostros previamente registrados. La asistencia se registra automáticamente si se reconoce un rostro registrado. La configuración del programa permite cargar los datos de los alumnos desde imágenes de rostros o desde un archivo CSV, lo que brinda flexibilidad en la fuente de datos.
 
-# Funcionalidad:
+### Funcionalidad:
 
 1. **Importación de Bibliotecas:** El código importa las bibliotecas necesarias, incluyendo OpenCV (para el procesamiento de imágenes y video), os (para manipulación de archivos y directorios), face_recognition (una librería de Python para reconocimiento facial) y time (para el seguimiento del tiempo).
 
