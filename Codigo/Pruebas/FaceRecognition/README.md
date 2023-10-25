@@ -1,5 +1,5 @@
 # Face Recognition
-Este código es un programa de reconocimiento facial que utiliza la biblioteca OpenCV y Face Recognition para detectar y reconocer rostros en un video en tiempo real. A continuación, se presenta una descripción detallada del código:
+Estos códigos consisten en programas de reconocimiento facial que utilizan la biblioteca OpenCV y Face Recognition para detectar y reconocer rostros en un video en tiempo real. A continuación, se presenta una descripción detallada del código:
 
 ## Asistencia_FR
 Este código se utiliza para llevar un registro de la asistencia de alumnos a través del reconocimiento facial en un entorno de video en tiempo real. Los datos de los alumnos se almacenan en un archivo CSV y se comparan con los rostros detectados en el video para determinar la asistencia.
@@ -84,17 +84,29 @@ Este código se utiliza para realizar el reconocimiento facial en un entorno de 
    - Libera la cámara.
    - Muestra un mensaje de cierre del programa, junto con el tiempo de ejecución y la liberación de la cámara.
 
-## 3. Documentación
-En esta etapa, se busca presentar los avances en cuanto a la documentación del proceso realizado en función de la metodología.
+## Root
+Este código permite detectar y comparar rostros en un video en tiempo real con un rostro de referencia en una imagen estática. Puede ser útil para tareas de reconocimiento facial y autenticación.
 
-* `MR3_Documentacion`
+### Funcionalidad:
 
-## 4. Modelo y refinamiento
-En esta etapa, se investigan y evalúan diferentes modelos o enfoques para abordar el problema en cuestión. Se analizan las características de los datos y se selecciona el modelo que mejor se adapte a los requisitos del proyecto. Esto podría incluir la exploración de modelos de aprendizaje automático, algoritmos de análisis estadístico u otras técnicas pertinentes.
+1. **Importación de Bibliotecas:** El código importa las bibliotecas necesarias, incluyendo OpenCV (para el procesamiento de imágenes y video) y face_recognition (una librería de Python para reconocimiento facial).
 
-* `MR4_ModeloRefinamiento`
+2. **Carga de una Imagen Fija:** Carga una imagen estática llamada 'Frida.jpg' en la que se desea reconocer un rostro. Luego, detecta la ubicación del rostro en la imagen y calcula su codificación (encoding) para su posterior comparación con rostros en un video en tiempo real.
 
-## 5. Evaluación
-En esta etapa, se analizan los requerimientos y los datos disponibles y se determinan los tipo de pruebas y métricas que permitirán saber si realmente están cumpliendo con su objetivo y generar diagnósticos del modelo.
+3. **Detección de Rostro en Imagen Fija:** Se incluye un bloque de código que está actualmente comentado, el cual dibuja un rectángulo alrededor del rostro detectado en la imagen estática y muestra la imagen con el rectángulo. Esta parte se utiliza para visualizar el proceso de detección en una imagen estática.
 
-* `MR5_Evaluacion`
+4. **Detección de Rostro en Video y Comparación con una Imagen:** El código inicia la cámara (o dispositivo de captura de video) y comienza a capturar fotogramas en tiempo real. Luego, detecta rostros en cada fotograma y compara cada rostro detectado con el rostro previamente codificado en la imagen estática.
+
+   - Si se detecta un rostro en el video, se calcula su codificación.
+   - Luego, se compara esta codificación con la codificación del rostro en la imagen estática.
+   - Los resultados de la comparación se almacenan en la variable "results".
+   - Si la comparación devuelve "True", significa que el rostro en el video coincide con el de la imagen estática; de lo contrario, devuelve "False".
+
+5. **Visualización en Tiempo Real:** Muestra el video en tiempo real con rectángulos verdes alrededor de los rostros detectados. Además, imprime en la consola los resultados de comparación ("True" o "False") para cada rostro detectado en el video.
+
+6. **Finalización del Programa:** El programa se puede detener manualmente presionando la tecla 'q'. Cuando se cierra, se liberan los recursos de la cámara y se termina la ejecución del programa.
+
+
+## Referencias de librerías
+* `face recognition`
+* 
