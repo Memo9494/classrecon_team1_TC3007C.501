@@ -58,7 +58,7 @@ Este código demuestra el uso de la biblioteca **MediaPipe** para realizar la de
 
 En resumen, este código utiliza la biblioteca MediaPipe para detectar y rastrear poses humanas en tiempo real a través de una cámara web. También realiza un seguimiento de la participación de una persona en función de la posición de su muñeca en relación con su ojo, lo que lo hace útil para aplicaciones como el seguimiento de la atención en un entorno educativo.
 
-## Pose detection - Yolov8
+## [Pose detection - Yolov8](https://github.com/Memo9494/classrecon_team1_TC3007C.501/blob/main/Codigo/Pruebas/PoseEstimation/posedetection_yolov8.py)
 
 Este código muestra cómo usar el modelo YOLO (You Only Look Once) para la detección de objetos, con un enfoque en la detección de poses humanas. A continuación, se proporciona una documentación detallada del código:
 
