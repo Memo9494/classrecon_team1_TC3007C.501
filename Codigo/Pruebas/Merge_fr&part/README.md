@@ -1,4 +1,4 @@
-# Face Recognition
+# [Sistema de toma de asistencia y participación](https://github.com/Memo9494/classrecon_team1_TC3007C.501/blob/main/Codigo/Pruebas/Merge_fr%26part/merge.py)
 
 El código proporciona un sistema de registro de participación en un entorno de aula utilizando la detección facial y de cuerpos humanos. A continuación, se presenta una documentación detallada del código:
 
