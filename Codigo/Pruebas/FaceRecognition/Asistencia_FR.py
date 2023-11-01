@@ -13,18 +13,18 @@ import numpy as np
 print("[PROCESO] Iniciando programa...")
 # Indicadores de tiempo
 start_time = round(time.time(),2)  # tiempo de incio de programa
-time_limit = 120.0                 # Limite de tiempo para tomar una participacion
+time_limit = 120.0                 # Limite de tiempo para tomar una asistencia
 
 # Conteo de FPS
 fps = 0
 frame_count = 0
 start_time_fps = start_time
 
+print("[PROCESO] Cargando datos...")
+''' Extraer los encodings de un CSV de los alumnos registrados '''
 # Nombres de los alumnos registrados
 f_circulo_encodings = []
 f_circulo_names = []
-
-''' Extraer los encodings de un CSV de los alumnos registrados '''
 circuloPath = os.path.dirname(os.path.abspath(__file__))
 circuloPath = circuloPath + '\\encodings.txt'
 circuloPath = circuloPath.replace("\\","/")
@@ -42,10 +42,11 @@ with open(circuloPath, "r") as file:
         f_circulo_names.append(name)
         f_circulo_encodings.append(encoding)
 
+print("[PROCESO] Datos cargados")
 # Elementos de asistencia
-num_dt = len(f_circulo_names)
-alumni_asist_cont = np.zeros(num_dt, dtype=int)
-alumni_asist = np.zeros(num_dt, dtype=int)
+num_dt = len(f_circulo_names)                  # Numero de alumnos registrados
+alumni_asist_cont = np.zeros(num_dt, dtype=int)# Conteo de asistencia
+alumni_asist = np.zeros(num_dt, dtype=int)     # Asistencia
 
 # Cargamos la cámara
 print('[PROCESO] Cargando camara...')
@@ -59,6 +60,7 @@ while True:
     
     elapsed_time = time.time() - start_time_fps
     frame_count += 1 # Contador de frames por segundo (FPS)
+    
     f_data_locations = face_recognition.face_locations(frame) # Obtiene las coordenadas del rostro en la imagen
     if f_data_locations != []:                                # Si se detecta un rostro
         print("[PROCESO] Rostro detectado")
@@ -79,6 +81,7 @@ while True:
             cv2.putText(frame, name, (left +3, bottom -3), font, 0.4, (255,255,255), 1)
     else:
         print("[ALERTA] No se detecto un rostro")
+    
     # Conteo de frames por segundo (FPS)
     if elapsed_time >= 1:
             fps = frame_count / elapsed_time
@@ -92,12 +95,12 @@ while True:
     
     # Toma de asistencia
     if actual_time >= time_limit:
-        indices = [i for i, valor in enumerate(alumni_asist_cont) if valor >= 10]
+        indices = [i for i, valor in enumerate(alumni_asist_cont) if valor >= 10] # Verificar si aparece mas de 10 veces en ese tiempo
         print("Indices: ", indices)
         for i in indices:
             alumni_asist[i] = 1
         break
-    elif cv2.waitKey(1) == ord('q'):
+    if cv2.waitKey(1) == ord('q'):
         break
   
 # Calculo del tiempo
