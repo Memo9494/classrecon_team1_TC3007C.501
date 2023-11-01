@@ -1,7 +1,15 @@
 # Face Recognition
-Estos códigos consisten en programas de reconocimiento facial que utilizan la biblioteca OpenCV y Face Recognition para detectar y reconocer rostros en un video en tiempo real. A continuación, se presenta una descripción detallada del código:
+Estos códigos consisten en programas de reconocimiento facial que utilizan la biblioteca OpenCV y Face Recognition para detectar y reconocer rostros en un video en tiempo real. La implementación de esta solución requirió de múltiples iteraciones las principales son:
 
-## Asistencia_FR
+* Reconocimiento facial de una persona con base en una imagen: **_root_FaceRecognition_**.
+* Reconocimiento facial de una persona en un video en tiempo real: **_root_FaceRecognition_**.
+* Reconocimiento facial de más de una persona en un video en tiempo real: **_multipple_FR_**.
+* Optimización de la obtención de los registros de los rostros de las personas en la base de datos para realizar el reconocimiento: **_multiple_FR_**.
+* Implementación del algoritmo de asistencia: **_attendance_FR_**.
+
+A continuación, se presenta una descripción detallada del código:
+
+## attendance_FR
 Este código se utiliza para llevar un registro de la asistencia de alumnos a través del reconocimiento facial en un entorno de video en tiempo real. Los datos de los alumnos se almacenan en un archivo CSV y se comparan con los rostros detectados en el video para determinar la asistencia.
 
 ### Funcionalidad:
@@ -46,7 +54,7 @@ Este código se utiliza para llevar un registro de la asistencia de alumnos a tr
    - Indica si un alumno está presente (1) o ausente (0) según el límite de reconocimientos requeridos.
    - Muestra un mensaje de cierre del programa.
 
-## Varios Rostros Xframe_FR
+## multiple_FR
 Este código se utiliza para realizar el reconocimiento facial en un entorno de video en tiempo real, comparando los rostros detectados con los rostros previamente registrados. La asistencia se registra automáticamente si se reconoce un rostro registrado. La configuración del programa permite cargar los datos de los alumnos desde imágenes de rostros o desde un archivo CSV, lo que brinda flexibilidad en la fuente de datos.
 
 ### Funcionalidad:
@@ -108,5 +116,5 @@ Este código permite detectar y comparar rostros en un video en tiempo real con 
 
 
 ## Referencias de librerías
-* `face recognition`
-* 
+* `face_recognition`: https://pypi.org/project/face-recognition/
+* `opencv`: https://opencv.org/
