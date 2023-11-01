@@ -17,7 +17,7 @@ Se analizan los datos presentados en el reto y se determina cuál es el mejor es
 ### 3. Documentación
 En esta etapa, se busca presentar los avances en cuanto a la documentación del proceso realizado en función de la metodología.
 
-* `MR3_Documentacion`
+* [MR3_Documentacion](https://github.com/Memo9494/classrecon_team1_TC3007C.501/tree/main/Retroalimentacion/MR3_Documentaci%C3%B3n)
 
 ### 4. Modelo y refinamiento
 En esta etapa, se investigan y evalúan diferentes modelos o enfoques para abordar el problema en cuestión. Se analizan las características de los datos y se selecciona el modelo que mejor se adapte a los requisitos del proyecto. Esto podría incluir la exploración de modelos de aprendizaje automático, algoritmos de análisis estadístico u otras técnicas pertinentes.
