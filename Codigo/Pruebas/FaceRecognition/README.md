@@ -1,5 +1,13 @@
 # Face Recognition
-Estos códigos consisten en programas de reconocimiento facial que utilizan la biblioteca OpenCV y Face Recognition para detectar y reconocer rostros en un video en tiempo real. A continuación, se presenta una descripción detallada del código:
+Estos códigos consisten en programas de reconocimiento facial que utilizan la biblioteca OpenCV y Face Recognition para detectar y reconocer rostros en un video en tiempo real. La implementación de esta solución requirió de múltiples iteraciones las principales son:
+
+* Reconocimiento facial de una persona con base en una imagen: **_root_FaceRecognition_**.
+* Reconocimiento facial de una persona en un video en tiempo real: **_root_FaceRecognition_**.
+* Reconocimiento facial de más de una persona en un video en tiempo real: **_multipple_FR_**.
+* Optimización de la obtención de los registros de los rostros de las personas en la base de datos para realizar el reconocimiento: **_multiple_FR_**.
+* Implementación del algoritmo de asistencia: **_attendance_FR_**.
+
+A continuación, se presenta una descripción detallada del código:
 
 ## Asistencia_FR
 Este código se utiliza para llevar un registro de la asistencia de alumnos a través del reconocimiento facial en un entorno de video en tiempo real. Los datos de los alumnos se almacenan en un archivo CSV y se comparan con los rostros detectados en el video para determinar la asistencia.
