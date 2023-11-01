@@ -41,11 +41,11 @@ Documentos en la carpeta:
 *   [...](): Documento donde se resumen los requerimientos del proyecto.
    
 
-## Archivos para revisión - Profesores
+## Archivos para revisión Momentos de Retroalimentación - Profesores
 
 A continuación, se presenta una lista de los archivos que deben ser revisados para calificar cada subcompetencia. Cabe mencionar que para esta etapa, **Momento de Retroalimentación**, se debe situar en la carpeta `Retroalimentación`:
 
-* `MR3_Documentacion`
+* [MR3_Documentacion](https://github.com/Memo9494/classrecon_team1_TC3007C.501/tree/main/Retroalimentacion/MR3_Documentaci%C3%B3n)
 
 Documentos en la carpeta:
 
