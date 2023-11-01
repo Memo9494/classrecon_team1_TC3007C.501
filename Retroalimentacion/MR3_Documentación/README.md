@@ -1,6 +1,6 @@
 
 # Documentación
-En esta etapa, se busca presentar los avances en cuanto a la documentación del proceso realizado en función de la metodología.
+En esta etapa, se busca presentar los avances en cuanto a la documentación del proceso realizado en función de la metodología. En seguida se presentan las conexiones a los avances en las diferentes áreas de objetivos que se encuentran en el repositorio:
 
 * [Documento](): En este documento se da un panorama general del proyecto (objetivos, requerimientos, alcances, metodología, etc) y se argumentan los algoritmos desarrollados para la solución del reto.
 * [Web](https://github.com/Memo9494/classrecon_team1_TC3007C.501/tree/main/Codigo/web): Código fuente de la propuesta de solución de la Interfaz de Usuario.
