@@ -64,27 +64,37 @@ track_history = defaultdict(lambda: [])
 print("[PROCESO] Modelo cargado")
 
 ''' Face Recognition '''
-def face_recog(frame, data_encodings):
+def face_recog(frame, data_encodings, attendance, alumni_list):
     data_face_locations = face_recognition.face_locations(frame) # Obtiene las coordenadas del rostro en la imagen
     if data_face_locations != []:                                # Si se detecta un rostro
+        flag = True
         data_face_encodings = face_recognition.face_encodings(frame, data_face_locations) # Obtiene los encodings de los rostros del frame
         for face_encoding, (top, right, bottom, left) in zip(data_face_encodings, data_face_locations):
             matches = face_recognition.compare_faces(data_encodings, face_encoding) # resultados de la comparacion de rostros
             if True in matches:
                 index = matches.index(True)
-                flag = True
+                if attendance == False:
+                    alumni_asist_cont[index] += 1
+                    name = alumni_list[index]["name"]
+                    # cv2.rectangle(frame, (left, top), (right, bottom), (0,255,0), 2)  # Dibuja un rectangulo en el rostro
+                    # cv2.rectangle(frame, (left, bottom -10), (right, bottom), (0,255,0), cv2.FILLED)
+                    # cv2.putText(frame, name, (left +3, bottom - 5), cv2.FONT_HERSHEY_DUPLEX, 0.4, (255,255,255), 1)
+                else:
+                    if alumni_list[index]["attendance"] == 0:
+                        alumni_list[index]["delay"] = 1
+                        alumni_list[index]["attendance"] = 1
+                    alumni_list[index]["participations"] += 1
+                    print("[PROCESO] Participacion registrada")
             else:
-                index = None
-                flag = False
+                name = "Desconocido"
     else:
-        index = None
-        flag = None
-        top, right, bottom, left = None, None, None, None
-    
-    return flag, index, (top, right, bottom, left)
+        print("[PROCESO] Rostros no detectados]")
+        flag = False
+    return flag
     
 print('[PROCESO] Cargando camara...')
 cap = cv2.VideoCapture(0)
+
 print('[PROCESO] Camara conectada')
 # Indicadores de tiempo
 start_time_class = round(time.time(),2)  # tiempo de incio de clase
@@ -94,6 +104,7 @@ attendance_taken = False           # Indicador de asistencia tomada
 # Conteo de FPS
 fps = 0
 frame_count = 0
+fps_count = 0
 start_time_fps = start_time_class
 while cap.isOpened():
     read, frame = cap.read() # Frame leido por la camara
@@ -104,43 +115,22 @@ while cap.isOpened():
     
     elapsed_time = time.time() - start_time_fps
     frame_count += 1 # Contador de frames por segundo (FPS)
+    fps_count += 1 # Contador de frames por segundo (FPS)
     # Run YOLOv8 tracking on the frame, persisting tracks between frames
     results = model.track(frame, persist=True)
     if (results[0] != []) and (results[0].boxes != None):
-        # Get the boxes and track IDs
-        boxes = results[0].boxes.xywh.cpu()
-        track_ids = results[0].boxes.id.cpu().tolist()
-    
-        if actual_time < time_lim_attendance :
-            flag, index, (top, right, bottom, left) = face_recog(frame, data_encodings)
-            if flag != None: 
-                if flag:
-                    alumni_asist_cont[index] += 1
-                    name = alumni_list[index]["name"]
-                else:
-                    name = "Desconocido"
-                cv2.rectangle(frame, (left, top), (right, bottom), (0,255,0), 2)  # Dibuja un rectangulo en el rostro
-                cv2.rectangle(frame, (left, bottom -10), (right, bottom), (0,255,0), cv2.FILLED)
-                cv2.putText(frame, name, (left +3, bottom - 5), cv2.FONT_HERSHEY_DUPLEX, 0.4, (255,255,255), 1)
-            else:
-                print("[PROCESO] Rostros no detectados")
+        if (actual_time > time_lim_attendance) and (attendance_taken == False):
+            attendance_taken = True
+            print("[PROCESO] Tiempo de asistencia a tiempo terminado")
+            indices = [i for i, valor in enumerate(alumni_asist_cont) if valor >= 10] # Verificar si aparece mas de 10 veces en ese tiempo
+            for i in indices:
+                alumni_list[i]["attendance"] = 1
+            print("[PROCESO] Asistencia tomada")
         else:
-            # Visualize the results on the frame
-            annotated_frame = results[0].plot(boxes=False)
-            if attendance_taken == False:
-                attendance_taken = True
-                print("[PROCESO] Tiempo de asistencia a tiempo terminado")
-                indices = [i for i, valor in enumerate(alumni_asist_cont) if valor >= 10] # Verificar si aparece mas de 10 veces en ese tiempo
-                for i in indices:
-                    alumni_list[i]["attendance"] = 1
-                print("[PROCESO] Asistencia tomada")
-            else:
+            if results[0].boxes.id: 
+                track_ids = results[0].boxes.id.cpu().tolist()
                 keypoints = results[0].keypoints.xy.cpu().numpy()
-                for box, track_id, kpts in zip(boxes, track_ids, keypoints):
-                    print("TRACK ID : ", track_id)
-                    # Wrists coordinates
-                    rW_x, rW_y = kpts[get_keypoint.RIGHT_WRIST]
-                    lW_x, lW_y = kpts[get_keypoint.LEFT_WRIST]
+                for track_id, kpts in zip(track_ids, keypoints):
                     # Nose coordinates
                     n_x, n_y = kpts[get_keypoint.NOSE]
                     # Ears coordinates
@@ -155,39 +145,33 @@ while cap.isOpened():
                     st_pt_str = str(st_pt[0]) + "," + str(st_pt[1])
                     ed_pt = (int(lE_x + (ears_dist*0.2)), int(n_y + (noseye_dist * 4)))
                     ed_pt_str = str(ed_pt[0]) + "," + str(ed_pt[1])
-                    # cv2.rectangle(annotated_frame, st_pt, ed_pt, (0, 255, 0), 2)
+                    cv2.rectangle(frame, st_pt, ed_pt, (0, 255, 0), 2)
+                    face_frame = frame[st_pt[1]:ed_pt[1], st_pt[0]:ed_pt[0]]
                     
-                    # Participation Counter
-                    if rW_y < rEy_y :
-                        stages[int(track_id-1)] = 0
-                    if rW_y > rEy_y and stages[int(track_id-1)] == 0:
-                        stages[int(track_id-1)]= 1
-                        print("PARTICIPACION")
-                        face_frame = frame[st_pt[1]:ed_pt[1], st_pt[0]:ed_pt[0]]
-                        flag, index, (top, right, bottom, left) = face_recog(face_frame, data_encodings)
-                        if flag != None: 
-                            if flag:
-                                if alumni_list[index]["attendance"] == 0:
-                                    alumni_list[index]["delay"] = 1
-                                    alumni_list[index]["attendance"] = 1
-                                name = alumni_list[index]["name"]
-                                alumni_list[index]["participations"] += 1
-                                cv2.imwrite(f"Participacion_{name}_{alumni_list[index]['participations']}.jpg", face_frame)    
-                            else:
-                                name = "Desconocido"
-                            print("[PROCESO] Participacion registrada")
-                            print("Nombre: ", name)
-                        else:
-                            print("[PROCESO] Rostros no detectados")
-    # Conteo de frames por segundo (FPS)
-    if elapsed_time >= 1:
-            fps = frame_count / elapsed_time
-            frame_count = 0
-            start_time_fps = time.time()
-    text = f"FPS: {fps}"
+                    if actual_time < time_lim_attendance:
+                        if frame_count % 8 == 0:
+                            face_recog(face_frame, data_encodings, attendance_taken, alumni_list)
+                    else:
+                        # Visualize the results on the frame
+                        frame = results[0].plot(boxes=False)
+                        # Wrists coordinates
+                        rW_x, rW_y = kpts[get_keypoint.RIGHT_WRIST]
+                        lW_x, lW_y = kpts[get_keypoint.LEFT_WRIST]
+                        
+                        # Participation Counter
+                        if rW_y < rEy_y :
+                            stages[int(track_id-1)] = 0
+                        if rW_y > rEy_y and stages[int(track_id-1)] == 0:
+                            stages[int(track_id-1)]= 1
+                            print("PARTICIPACION")
+                            face_recog(face_frame, data_encodings, attendance_taken, alumni_list)
     
-    if attendance_taken == True:    
-        frame = annotated_frame
+    # Conteo de frames por segundo (FPS)
+    if elapsed_time > 1:
+            fps = round(fps_count / elapsed_time)
+            fps_count = 0
+            start_time_fps = time.time()
+    text = f"{fps} fps"
     cv2.putText(frame, text, (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
     cv2.imshow('Frame',frame)
         
