@@ -6,5 +6,5 @@ En lo que concierne al reto, el socio formador nos indicó que por la aplicació
 
 En lo que concierne a la detección de participación decidimos utilizar un modelo que nos permitiera obtener los keypoints de las articulaciones de una persona. Yolo (You only look once) tiene modelos preentremados que brindan como información, los bounding boxes de una persona, sus keypoints y contiene una función de trackeo en donde se le asigna IDs a las personas. Para el contexto del aula de clases no es necesario un entrenamiento ya que los movimientos que se ejercen ahí son lentos y accesibles de rastrear.
 
-En el siguiente video se explica más afondo nuestra implementación: 
+En el siguiente video se explica más afondo nuestra implementación: https://youtu.be/WVavTEa8yoE
 En el documento presente, se busca solución a los requerimientos de la rúbrica.
