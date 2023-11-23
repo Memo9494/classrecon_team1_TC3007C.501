@@ -1,21 +1,18 @@
-# Carpeta final
+# Correciones Momentos de Retroalimentación
 
-Esta carpeta contiene en su interior las entregas finales del bloque de Inteligencia Artificial en el apartado del reto
+Esta carpeta contiene en su interior los documentos con las correciones propuestas por los profesores en los distintos momentos de retroalimentación.
 
-## Estructura de Carpetas
+## Retroalimentación
 
-- `.../`: En esta carpeta se encuentra el código y la documentación de la interfaz del proyecto del Titanic.
+| Momento de Retroalimentación  | Retroalimentación | Implementación |
+|:------------- |:---------------:| -------------:|
+| MR1 - Metodología | * Incluir un mapeo de los recursos y herramientas disponibles. * Realizar un GANTT que exprese de forma visual el plan de trabajo. * Incluir apartado de comunicación con el socio. | Reporte Final |
+| MR2 - Datos | *__Sin retroalimentación__* | Reporte Final  |
+| MR3 - Privacidad y Seguridad de los datos | Se cubrieron con todos los puntos de la rúbrica. | Cell 9        |
+| MR4 - Documentación | Se cubrieron con todos los puntos de la rúbrica. Actualizar las fechas del GANTT | Reporte Final |
+| MR5 - Modelo y refinamiento | Se cubrió con la rúbrica, específicamente se incluyeron modelos adicionales para cumplir con todos los rubros. Siguieron indicaciones de socio formador para uso de modelos para el proyecto. | Modelo |
+| MR6 - Evaluación | Correcciones de gramática y relacionar el último modelo con el reto | Evaluación Papers |
 
 ## Archivos
 
-- `...`: Este archivo contiene el procedimiento detallado de la solución al reto del Titanic.
-- `...`: Reporte con análisis detallado del reto.
-
-
-## Instrucciones de Uso
-
-1. Abre el archivo `AI.ipynb` para ver el procedimiento detallado de la solución.
-2. Abre el archivo Documentacion_Final_Reto_interfaz.pdf para ver la documentación detallada de la solución.
-2. Dirígete a la carpeta `interfaz_Firebase/` para acceder al código y la documentación de la interfaz del proyecto.
-
-¡Esperamos que encuentres esta información útil!
+* MR6_Evaluacion:
