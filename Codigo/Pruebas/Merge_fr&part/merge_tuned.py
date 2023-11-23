@@ -59,12 +59,12 @@ class GetKeypoint(BaseModel):
 model = YOLO('yolov8_models/yolov8n-pose.pt') # usar modelo de pose
 get_keypoint = GetKeypoint()
 stages = [None] * num_alumni
-# Store the track history
-track_history = defaultdict(lambda: [])
+# # Store the track history
+# track_history = defaultdict(lambda: [])
 print("[PROCESO] Modelo cargado")
 
 ''' Face Recognition '''
-def face_recog(frame, data_encodings, attendance, alumni_list, track_id=None):
+def face_recog(frame, data_encodings, attendance_flag, alumni_list, track_id=None):
     data_face_locations = face_recognition.face_locations(frame) # Obtiene las coordenadas del rostro en la imagen
     if data_face_locations != []:                                # Si se detecta un rostro
         flag = True
@@ -73,14 +73,11 @@ def face_recog(frame, data_encodings, attendance, alumni_list, track_id=None):
             matches = face_recognition.compare_faces(data_encodings, face_encoding) # resultados de la comparacion de rostros
             if True in matches:
                 index = matches.index(True)
-                if attendance == False:
+                if attendance_flag == False:
                     alumni_asist_cont[index] += 1
-                    # name = alumni_list[index]["name"]
                     if track_id:
                         alumni_list[index]["track_id"] = track_id
-                    # cv2.rectangle(frame, (left, top), (right, bottom), (0,255,0), 2)  # Dibuja un rectangulo en el rostro
-                    # cv2.rectangle(frame, (left, bottom -10), (right, bottom), (0,255,0), cv2.FILLED)
-                    # cv2.putText(frame, name, (left +3, bottom - 5), cv2.FONT_HERSHEY_DUPLEX, 0.4, (255,255,255), 1)
+                        
                 else:
                     if alumni_list[index]["attendance"] == 0:
                         alumni_list[index]["delay"] = 1
@@ -103,7 +100,7 @@ print('[PROCESO] Camara conectada')
 # Indicadores de tiempo
 start_time_class = round(time.time(),2)  # tiempo de incio de clase
 end_time_class= 60.0    # tiempo de fin de clase
-time_lim_attendance = 30.0         # Limite de tiempo para tomar una asistencia
+time_lim_attendance = 40.0         # Limite de tiempo para tomar una asistencia
 attendance_taken = False           # Indicador de asistencia tomada
 # Conteo de FPS
 fps = 0
@@ -121,7 +118,7 @@ while cap.isOpened():
     frame_count += 1 # Contador de frames por segundo (FPS)
     fps_count += 1 # Contador de frames por segundo (FPS)
     # Run YOLOv8 tracking on the frame, persisting tracks between frames
-    results = model.track(frame, persist=True)
+    results = model.track(frame, persist=True) 
     if (results[0] != []) and (results[0].boxes.id != None):
         track_ids = results[0].boxes.id.cpu().tolist()
         keypoints = results[0].keypoints.xy.cpu().numpy()

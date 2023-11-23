@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard del Profesor</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  .dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: stretch;
+    max-width: 1200px; /* O el ancho máximo que prefieras */
+    margin: auto;
+  }
+  
+  .chart-container {
+    width: calc(40% - 20px); /* Se resta un poco para tener en cuenta el margen */
+    margin: 20px 10px;
+    height: 300px; /* Altura fija para los contenedores */
+    box-sizing: border-box; /* Asegura que el padding y el border sean incluidos en el ancho y la altura */
+  }
+  
+  .chart-container h2 {
+    text-align: center; /* Centra el texto del título */
+    margin-bottom: 1%; /* Espacio debajo del título para separarlo de la gráfica */
+  }
+  
+  canvas {
+    width: 100% !important;
+    height: 100% !important;
+  }
+</style>
+</head>
+<body>
+
+<h1 style="text-align:center;">Rendimiento de Clases</h1>
+
+<div class="dashboard">
+  
+  <div class="chart-container">
+    <h2>Asistencia a Clases</h2>
+    <canvas id="attendanceChart"></canvas>
+  </div>
+  
+  <div class="chart-container">
+    <h2>Participación en Actividades</h2>
+    <canvas id="activityChart"></canvas>
+  </div>
+
+  <div class="chart-container">
+    <h2>Promedio de Asistencia de hoy</h2>
+    <canvas id="performanceChart"></canvas>
+  </div>
+  
+  <div class="chart-container">
+    <h2>Distribución de Calificaciones</h2>
+    <canvas id="gradesDistributionChart"></canvas>
+  </div>
+</div>
+
+<script>
+// Función para generar datos aleatorios
+function generarDatosAleatorios(cantidad, maximo) {
+  return Array.from({ length: cantidad }, () => Math.floor(Math.random() * maximo));
+}
+
+// Función para generar una distribución de probabilidad aleatoria
+function generarDistribucionProbabilidad(cantidad) {
+  let valores = generarDatosAleatorios(cantidad, 1000);
+  let sumaValores = valores.reduce((a, b) => a + b, 0);
+  return valores.map(x => x / sumaValores);
+}
+
+// Configuración común de opciones de gráfica
+const commonOptions = {
+  scales: {
+    y: {
+      beginAtZero: true
+    }
+  },
+  responsive: true,
+  maintainAspectRatio: false
+};
+
+const circleOptions = {
+  scales: {
+    x: {
+      display:false,
+      grid: {
+        display: false
+      }
+    },
+    y: {
+      display:false,
+      beginAtZero: true,
+      grid: {
+        display: false
+      }
+    }
+  },
+  responsive: true,
+  maintainAspectRatio: false
+};
+
+// Gráfica de Rendimiento de Exámenes
+const performanceData = {
+  labels: ['Asistencias', 'Faltas'],
+  datasets: [{
+    label: 'Porcentaje de asistencia',
+    data: [90,10], // Suponiendo que la calificación máxima es 10
+    fill: false,
+    borderColor: 'rgb(75, 192, 192)',
+    backgroundColor: ['rgba(0, 255, 0, 0.3)', 'rgba(255, 0, 0, 0.3)'],
+    tension: 0.1,
+    borderColor: 'white',
+    borderWidth: 7
+  }]
+};
+new Chart(document.getElementById('performanceChart'), {
+  type: 'doughnut',
+  data: performanceData,
+  options: circleOptions
+});
+
+// Gráfica de Asistencia a Clases
+const attendanceData = {
+  labels: ['Clase 1', 'Clase 2', 'Clase 3', 'Clase 4', 'Clase 5'],
+  
+  datasets: [{
+    label: 'Porcentaje de Asistencia',
+    data: generarDatosAleatorios(5, 100), // Suponiendo que el porcentaje es sobre 100
+    backgroundColor: 'rgba(255, 99, 132, 0.5)',
+    borderColor: 'rgb(255, 99, 132)',
+    borderWidth: 1
+  }]
+};
+new Chart(document.getElementById('attendanceChart'), {
+  type: 'bar',
+  data: attendanceData,
+  options: commonOptions
+});
+
+// Gráfica de Participación en Actividades
+const activityData = {
+  labels: ['Actividad 1', 'Actividad 2', 'Actividad 3', 'Actividad 4', 'Actividad 5'],
+  datasets: [{
+    label: 'Participación Estudiantil',
+    data: generarDatosAleatorios(5, 100), // Suponiendo que el porcentaje es sobre 100
+    backgroundColor: 'rgba(54, 162, 235, 0.5)',
+    borderColor: 'rgb(54, 162, 235)',
+    borderWidth: 1
+  }]
+};
+new Chart(document.getElementById('activityChart'), {
+  type: 'bar',
+  data: activityData,
+  options: commonOptions
+});
+
+// Gráfica de Distribución de Calificaciones
+const gradesDistributionData = {
+  labels: ['Insuficiente', 'Suficiente', 'Bien', 'Notable', 'Sobresaliente'],
+  datasets: [{
+    label: 'Distribución de Calificaciones',
+    data: generarDistribucionProbabilidad(6), // Distribución de calificaciones
+    backgroundColor: 'rgba(255, 206, 86, 0.5)',
+    borderColor: 'rgb(255, 206, 86)',
+    borderWidth: 1
+  }]
+};
+new Chart(document.getElementById('gradesDistributionChart'), {
+  type: 'bar',
+  data: gradesDistributionData,
+  options: {
+  ...commonOptions,
+  indexAxis: 'y',
+}
+});
+
+</script>
+
+</body>
+</html>
