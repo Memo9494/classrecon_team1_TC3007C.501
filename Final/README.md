@@ -1,7 +1,9 @@
 # Entrega Final
 28 de noviembre de 2023
 
-Esta carpeta contiene en su interior la integración del proyecto de la concentración en _Inteligencia artificial avanzada para la ciencia de datos II_.
+Esta carpeta contiene en su interior la integración del proyecto de la concentración en _Inteligencia artificial avanzada para la ciencia de datos II_ implementada por el Equipo 1 cuyos integrantes son:
+
+
 
 ## Estructura de Carpetas
 
