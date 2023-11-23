@@ -1,10 +1,12 @@
-# Carpeta final
+# Entrega Final
+28 de noviembre de 2023
 
-Esta carpeta contiene en su interior las entregas finales del bloque de Inteligencia Artificial en el apartado del reto
+Esta carpeta contiene en su interior la integración del proyecto de la concentración en _Inteligencia artificial avanzada para la ciencia de datos II_.
 
 ## Estructura de Carpetas
 
 - `.../`: En esta carpeta se encuentra el código y la documentación de la interfaz del proyecto del Titanic.
+- MR_correcciones: Documentos entregados en los distintos momentos de retroalimentación con las correcciones propuestas por los profesores.
 
 ## Archivos
 
