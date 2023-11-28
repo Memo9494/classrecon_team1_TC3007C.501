@@ -12,8 +12,8 @@ Esta carpeta contiene en su interior la integración del proyecto de la concentr
 
 ## Archivos
 
-- `...`: Repo memo pagina
-- `...`: scripts vision
+- Repo memo pagina: En este repositorio se encuentra el trabajo realizado para la creación de la página web
+- scripts vision: Archivo que contiene los scripts utilizados para la visión computacional
 - `...`: Reporte con análisis detallado del reto.
 
 
