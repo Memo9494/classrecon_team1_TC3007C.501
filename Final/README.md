@@ -16,7 +16,7 @@ Esta carpeta contiene en su interior la integración del proyecto de la concentr
 - azure_deploy1 @ 758af8e: Contenido utilizado para la implementación de la página web en la nube.
 
 ## Archivos
-
+- Evidencia Final Reto-1 .pdf: Archivo con la documentacion completa del proyecto
 - scripts vision: Archivo que contiene los scripts utilizados para la visión computacional
 - `...`: Reporte con análisis detallado del reto.
 - Comunicacion_SocioFormador.pdf: Línea del tiempo de la comunicación con el socio-formador
