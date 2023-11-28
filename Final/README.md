@@ -9,6 +9,8 @@ Esta carpeta contiene en su interior la integración del proyecto de la concentr
 
 - `.../`: En esta carpeta se encuentra el código y la documentación de la interfaz del proyecto del Titanic.
 - MR_correcciones: Documentos entregados en los distintos momentos de retroalimentación con las correcciones propuestas por los profesores.
+- School_control_web @ 9a6f568:
+- azure_deploy:
 
 ## Archivos
 
