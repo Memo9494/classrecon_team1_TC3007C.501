@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Stream</title>
+</head>
+<body>
+    <h1>Video en Tiempo Real</h1>
+    <img src="{% url 'pose_feed' %}" id="video-stream">
+    
+    <script>
+        const videoStream = document.getElementById('video-stream');
+        
+        // Actualiza la imagen cada 100 ms
+        setInterval(function() {
+            videoStream.src = "{% url 'pose_feed' %}" + "?t=" + new Date().getTime();
+        }, 100);
+    </script>
+</body>
+</html>

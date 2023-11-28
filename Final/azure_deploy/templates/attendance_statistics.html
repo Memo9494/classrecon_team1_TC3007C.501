@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard del Profesor</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  .dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: stretch;
+    max-width: 1200px; /* O el ancho máximo que prefieras */
+    margin: auto;
+  }
+  
+  .chart-container {
+    width: calc(40% - 20px); /* Se resta un poco para tener en cuenta el margen */
+    margin: 20px 10px;
+    height: 300px; /* Altura fija para los contenedores */
+    box-sizing: border-box; /* Asegura que el padding y el border sean incluidos en el ancho y la altura */
+  }
+  
+  .chart-container h2 {
+    text-align: center; /* Centra el texto del título */
+    margin-bottom: 10px; /* Espacio debajo del título para separarlo de la gráfica */
+  }
+  
+  canvas {
+    width: 100% !important;
+    height: 100% !important;
+  }
+</style>
+</head>
+<body>
+
+<h1 style="text-align:center;">Dashboard del Rendimiento de Clases</h1>
+
+<div class="dashboard">
+
+  <div class="chart-container">
+    <h2>Asistencia a Clases</h2>
+    <canvas id="attendanceChart"></canvas>
+  </div>
+
+  <div class="chart-container">
+    <h2>Participación en Actividades</h2>
+    <canvas id="activityChart"></canvas>
+  </div>
+  <div class="chart-container">
+    <h2>Promedio de asistencia: 5</h2>\
+  </div>
+  <div class="chart-container">
+    <h2>Promedio de participacion: 6</h2>\
+  </div>
+  <div>
+    <h2>Attendance per course</h2>
+
+</div>
+
+
+
+<script>
+ // Función para generar datos aleatorios
+function generarDatosAleatorios(cantidad, maximo) {
+  return Array.from({ length: cantidad }, () => Math.floor(Math.random() * maximo));
+}
+
+// Función para generar una distribución de probabilidad aleatoria
+function generarDistribucionProbabilidad(cantidad) {
+  let valores = generarDatosAleatorios(cantidad, 1000);
+  let sumaValores = valores.reduce((a, b) => a + b, 0);
+  return valores.map(x => x / sumaValores);
+}
+
+// Configuración común de opciones de gráfica
+            // Crear gráfico de asistencia
+{% comment %} var attendance_per_course = {{ attendance_data|json_script:"attendance_per_course" }};
+var participation_per_course = {{ participation_data.values|json_script:"participation_per_course" }};
+var courses_names = {{ courses_names|json_script:"courses_names" }}; {% endcomment %}
+
+
+const commonOptions = {
+  scales: {
+    y: {
+      beginAtZero: true
+    }
+  },
+  responsive: true,
+  maintainAspectRatio: false
+};
+
+
+// Gráfica de Rendimiento de Exámenes
+const performanceData = {
+  labels: ['Examen 1', 'Examen 2', 'Examen 3', 'Examen 4', 'Examen 5'],
+  datasets: [{
+    label: 'Promedio de Calificaciones',
+    data: generarDatosAleatorios(5, 10), // Suponiendo que la calificación máxima es 10
+    fill: false,
+    borderColor: 'rgb(75, 192, 192)',
+    tension: 0.1
+  }]
+};
+new Chart(document.getElementById('performanceChart'), {
+  type: 'line',
+  data: performanceData,
+  options: commonOptions
+});
+
+// Gráfica de Asistencia a Clases
+const attendanceData = {
+  labels:  [{% for name in courses_names %}'{{ name }}',{% endfor %}],
+  datasets: [{
+    label: 'Asistencia',
+    data: [{% for name in attendance_per_course %}'{{ name }}',{% endfor %}],    // Suponiendo que el porcentaje es sobre 100
+    backgroundColor: 'rgba(255, 99, 132, 0.5)',
+    borderColor: 'rgb(255, 99, 132)',
+    borderWidth: 1
+  }]
+};
+new Chart(document.getElementById('attendanceChart'), {
+  type: 'bar',
+  data: attendanceData,
+  options: commonOptions
+});
+
+// Gráfica de Participación en Actividades
+const activityData = {
+  labels: [{% for name in courses_names %}'{{ name }}',{% endfor %}],
+  datasets: [{
+    label: 'Participación Estudiantil',
+    data: [{% for name in participation_per_course %}'{{ name }}',{% endfor %}], // Suponiendo que el porcentaje es sobre 100
+    backgroundColor: 'rgba(54, 162, 235, 0.5)',
+    borderColor: 'rgb(54, 162, 235)',
+    borderWidth: 1
+  }]
+};
+new Chart(document.getElementById('activityChart'), {
+  type: 'bar',
+  data: activityData,
+  options: commonOptions
+});
+
+// Gráfica de Distribución de Calificaciones
+const gradesDistributionData = {
+  labels: ['Insuficiente', 'Suficiente', 'Bien', 'Notable', 'Sobresaliente'],
+  datasets: [{
+    label: 'Distribución de Calificaciones',
+    data: generarDistribucionProbabilidad(5), // Distribución de calificaciones
+    backgroundColor: 'rgba(255, 206, 86, 0.5)',
+    borderColor: 'rgb(255, 206, 86)',
+    borderWidth: 1
+  }]
+};
+new Chart(document.getElementById('gradesDistributionChart'), {
+  type: 'bar',
+  data: gradesDistributionData,
+  options: {
+  ...commonOptions,
+  indexAxis: 'y',
+}
+});
+
+</script>
+
+{% comment %} print the attendance_per_course javascript variable on the html {% endcomment %}
+{% comment %} <script>
+    var attendance_per_course = {{ attendance_data.values|json_script:"attendance_per_course" }};
+    var attendanceLabels = attendance_per_course.map(entry => entry.date);
+    var attendanceValues = attendance_per_course.map(entry => entry.is_attended);
+</script> {% endcomment %}
+
+
+
+</body>
+</html>
+
+
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance and Participation Statistics</title>
+    <!-- Agregar enlaces a las bibliotecas de Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Attendance Statistics</h1>
+    <table border="1">
+        <tr>
+            <th>User</th>
+            <th>Course</th>
+            <th>Date</th>
+            <th>Attended</th>
+        </tr>
+        {% for attendance in attendance_data %}
+            <tr>
+                <td>{{ attendance.user.username }}</td>
+                <td>{{ attendance.course.name }}</td>
+                <td>{{ attendance.date }}</td>
+                <td>{{ attendance.is_attended }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <h1>Participation Statistics</h1>
+    <table border="1">
+        <tr>
+            <th>User</th>
+            <th>Course</th>
+            <th>Date</th>
+            <th>Amount</th>
+        </tr>
+        {% for participation in participation_data %}
+            <tr>
+                <td>{{ participation.user.username }}</td>
+                <td>{{ participation.course.name }}</td>
+                <td>{{ participation.date }}</td>
+                <td>{{ participation.amount }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <!-- Agregar scripts para crear gráficos -->
+    <script>
+        // Crear gráfico de asistencia
+        <script>
+            // Crear gráfico de asistencia
+            var attendance_per_course = {{ attendance_data.values|json_script:"attendance_per_course" }};
+            var attendanceLabels = attendance_per_course.map(entry => entry.date);
+            var attendanceValues = attendance_per_course.map(entry => entry.is_attended);
+        
+            // Resto del código...
+        </script>
+        
+        var attendanceChart = new Chart(document.getElementById('attendanceChart'), {
+            type: 'bar',
+            data: {
+                labels: attendanceLabels,
+                datasets: [{
+                    label: 'Attended',
+                    data: attendanceValues,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Crear gráfico de participación
+        var participationData = {{ participation_data|json_script:"participationData" }};
+        var participationLabels = participationData.map(entry => entry.date);
+        var participationValues = participationData.map(entry => entry.amount);
+
+        var participationChart = new Chart(document.getElementById('participationChart'), {
+            type: 'bar',
+            data: {
+                labels: participationLabels,
+                datasets: [{
+                    label: 'Participation Amount',
+                    data: participationValues,
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+
+    <!-- Agregar contenedores para los gráficos -->
+    <div style="width:50%;">
+        <canvas id="attendanceChart"></canvas>
+    </div>
+    <div style="width:50%;">
+        <canvas id="participationChart"></canvas>
+    </div>
+</body>
+</html> {% endcomment %}
