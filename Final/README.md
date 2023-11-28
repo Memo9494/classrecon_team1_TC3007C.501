@@ -15,6 +15,7 @@ Esta carpeta contiene en su interior la integración del proyecto de la concentr
 - Repo memo pagina: En este repositorio se encuentra el trabajo realizado para la creación de la página web
 - scripts vision: Archivo que contiene los scripts utilizados para la visión computacional
 - `...`: Reporte con análisis detallado del reto.
+- Comunicacion_SocioFormador.pdf: Línea del tiempo de la comunicación con el socio-formador
 
 ## Correcciones
 | Momento de Retroalimentación  | Retroalimentación | Cambio |
