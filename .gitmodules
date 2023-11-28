@@ -16,3 +16,6 @@
 [submodule "Final/azure_deploy1"]
 	path = Final/azure_deploy1
 	url = https://github.com/Memo9494/maspruebas.git
+[submodule "Final/scripts_vision"]
+	path = Final/scripts_vision
+	url = https://github.com/FCANOF/scripts_vision.git
