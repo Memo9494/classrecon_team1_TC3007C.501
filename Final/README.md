@@ -3,26 +3,28 @@
 
 Esta carpeta contiene en su interior la integración del proyecto de la concentración en _Inteligencia artificial avanzada para la ciencia de datos II_ implementada por el Equipo 1 cuyos integrantes son:
 
+- Frida Cano Falcón A01752953
+- Jorge Javier Sosa Briseño A01749489
+- Guillermo Romeo Cepeda Medina A01284015
+- Daniel Saldaña Rodríguez A00829752
 
 
 ## Estructura de Carpetas
 
 - MR_correcciones: Documentos entregados en los distintos momentos de retroalimentación con las correcciones propuestas por los profesores.
-- School_control_web: Carpeta con el proyecto de vision integrado en pagina web para su hosteo local y acceso por medio de un tuner de ngrock
-- azure_deploy1: submodulo con el deploy para la continua integracion con los servidores de azure, para poder acceder a el favor de comunicarse con Guillermo Cepeda
-
+- School_control_web @ 9a6f568: Contenido utilizado para la implementación de la página web localmente.
+- azure_deploy1 @ 758af8e: Contenido utilizado para la implementación de la página web en la nube.
 
 ## Archivos
-- Evidencia Final Reto-1.pdf : Documento con toda la descripcion del proyecto
-- Comunicacion_SocioFormador.pdf : Evidencias de comunicacion con Socio Formador
+
 - scripts vision: Archivo que contiene los scripts utilizados para la visión computacional
 - `...`: Reporte con análisis detallado del reto.
+- Comunicacion_SocioFormador.pdf: Línea del tiempo de la comunicación con el socio-formador
 
+## Correcciones
+| Momento de Retroalimentación  | Retroalimentación | Cambio |
+|:------------- |:---------------:| -------------:|
+| MR1 - Metodología | * Incluir un mapeo de los recursos y herramientas disponibles. * Realizar un GANTT que exprese de forma visual el plan de trabajo. * Incluir apartado de comunicación con el socio. | Se creó el GANTT y se añadieron las secciones faltantes |
+| MR4 - Documentación | Se cubrieron con todos los puntos de la rúbrica. Actualizar las fechas del GANTT | El GANTT fue actualizado |
+| MR6 - Evaluación | Correcciones de gramática y relacionar el último modelo con el reto | Se corrigieron los errores y se redactó la parte faltante |
 
-## Instrucciones de Uso
-
-1. Abre el archivo `AI.ipynb` para ver el procedimiento detallado de la solución.
-2. Abre el archivo Documentacion_Final_Reto_interfaz.pdf para ver la documentación detallada de la solución.
-2. Dirígete a la carpeta `interfaz_Firebase/` para acceder al código y la documentación de la interfaz del proyecto.
-
-¡Esperamos que encuentres esta información útil!
