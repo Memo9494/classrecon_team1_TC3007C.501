@@ -11,14 +11,12 @@ Esta carpeta contiene en su interior la integración del proyecto de la concentr
 
 ## Estructura de Carpetas
 
-- `.../`: En esta carpeta se encuentra el código y la documentación de la interfaz del proyecto del Titanic.
 - MR_correcciones: Documentos entregados en los distintos momentos de retroalimentación con las correcciones propuestas por los profesores.
 - School_control_web @ 9a6f568: Contenido utilizado para la implementación de la página web localmente.
 - azure_deploy: Contenido utilizado para la implementación de la página web en la nube.
 
 ## Archivos
 
-- Repo memo pagina: En este repositorio se encuentra el trabajo realizado para la creación de la página web
 - scripts vision: Archivo que contiene los scripts utilizados para la visión computacional
 - `...`: Reporte con análisis detallado del reto.
 - Comunicacion_SocioFormador.pdf: Línea del tiempo de la comunicación con el socio-formador
