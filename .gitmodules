@@ -7,3 +7,9 @@
 [submodule "Codigo/web/School_control_web"]
 	path = Codigo/web/School_control_web
 	url = https://github.com/Memo9494/School_control_web.git
+[submodule "Final/School_control_web"]
+	path = Final/School_control_web
+	url = https://github.com/Memo9494/School_control_web.git
+[submodule "azure_deploy"]
+	path = azure_deploy
+	url = https://github.com/Memo9494/maspruebas.git
