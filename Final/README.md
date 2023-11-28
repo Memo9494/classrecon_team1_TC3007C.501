@@ -3,10 +3,10 @@
 
 Esta carpeta contiene en su interior la integración del proyecto de la concentración en _Inteligencia artificial avanzada para la ciencia de datos II_ implementada por el Equipo 1 cuyos integrantes son:
 
-Frida Cano Falcón A01752953
-Jorge Javier Sosa Briseño A01749489
-Guillermo Romeo Cepeda Medina A01284015
-Daniel Saldaña Rodríguez A00829752
+- Frida Cano Falcón A01752953
+- Jorge Javier Sosa Briseño A01749489
+- Guillermo Romeo Cepeda Medina A01284015
+- Daniel Saldaña Rodríguez A00829752
 
 
 ## Estructura de Carpetas
