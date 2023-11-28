@@ -28,10 +28,4 @@ Esta carpeta contiene en su interior la integración del proyecto de la concentr
 | MR4 - Documentación | Se cubrieron con todos los puntos de la rúbrica. Actualizar las fechas del GANTT | El GANTT fue actualizado |
 | MR6 - Evaluación | Correcciones de gramática y relacionar el último modelo con el reto | Se corrigieron los errores y se redactó la parte faltante |
 
-## Instrucciones de Uso
 
-1. Abre el archivo `AI.ipynb` para ver el procedimiento detallado de la solución.
-2. Abre el archivo Documentacion_Final_Reto_interfaz.pdf para ver la documentación detallada de la solución.
-2. Dirígete a la carpeta `interfaz_Firebase/` para acceder al código y la documentación de la interfaz del proyecto.
-
-¡Esperamos que encuentres esta información útil!
