@@ -14,7 +14,6 @@ Esta carpeta contiene en su interior la integración del proyecto de la concentr
 
 - `...`: Este archivo contiene el procedimiento detallado de la solución al reto del Titanic.
 - `...`: Reporte con análisis detallado del reto.
-- Reporte final:
 
 
 ## Instrucciones de Uso
