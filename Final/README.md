@@ -12,7 +12,8 @@ Esta carpeta contiene en su interior la integración del proyecto de la concentr
 
 ## Archivos
 
-- `...`: Este archivo contiene el procedimiento detallado de la solución al reto del Titanic.
+- Repo memo pagina: En este repositorio se encuentra el trabajo realizado para la creación de la página web
+- scripts vision: Archivo que contiene los scripts utilizados para la visión computacional
 - `...`: Reporte con análisis detallado del reto.
 
 
